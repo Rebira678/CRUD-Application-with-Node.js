@@ -1,62 +1,57 @@
-````markdown
-# Task 5: REST API with Database Integration
+# CRUD Application with Node.js and MySQL
 
-## Description
+## 📌 Objective
 
-This project is a continuation of Task 4, focusing on integrating a REST API with a **MySQL database**.  
-Users can be added, viewed, updated, and deleted via the API. All operations are stored and retrieved from the database.
-
-Each user has the following fields:
-
-- `id` (auto-increment primary key)
-- `name`
-- `email`
-- `age`
+This project is a CRUD (Create, Read, Update, Delete) application built with **Node.js (Express)** and connected to a **MySQL database**.
+It demonstrates CRUD operations for the `Users` entity and can be extended to support more entities (e.g., `Courses`, `Orders`, etc.).
 
 ---
 
-## Technologies Used
+## 🛠️ Technologies Used
 
-- **Node.js** - Backend runtime
-- **Express.js** - REST API framework
-- **MySQL** - Relational database
-- **mysql2** - Node.js MySQL driver
-- **Nodemon** - Development server auto-reload
-- **Postman** - API testing
+* **Node.js** – Backend runtime
+* **Express.js** – REST API framework
+* **MySQL** – Relational database
+* **mysql2** – Node.js MySQL driver
+* **Nodemon** – Development server auto-reload
+* **Postman** – API testing
 
 ---
 
-## Setup Instructions
+## 📂 Project Setup
 
-### 1️⃣ Clone the repository
+### 1️⃣ Clone the Repository
 
 ```bash
 git clone <your-repo-link>
-cd rest-api-db
+cd crud-app-node-mysql
 ```
-````
 
-### 2️⃣ Install dependencies
+### 2️⃣ Install Dependencies
 
 ```bash
 npm install
 ```
 
-### 3️⃣ Create `.env` file
+### 3️⃣ Configure Environment Variables
+
+Create a `.env` file:
 
 ```env
 DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=<your_mysql_password>
-DB_NAME=saiketdb
+DB_NAME=crud_db
 PORT=4000
 ```
 
-### 4️⃣ Start MySQL and create database/table
+### 4️⃣ Setup Database
+
+Start MySQL and create the schema:
 
 ```sql
-CREATE DATABASE IF NOT EXISTS saiketdb;
-USE saiketdb;
+CREATE DATABASE IF NOT EXISTS crud_db;
+USE crud_db;
 
 CREATE TABLE IF NOT EXISTS users (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -66,7 +61,7 @@ CREATE TABLE IF NOT EXISTS users (
 );
 ```
 
-### 5️⃣ Start the server
+### 5️⃣ Run the Server
 
 ```bash
 npx nodemon server.js
@@ -75,53 +70,52 @@ npx nodemon server.js
 Expected output:
 
 ```
- Server running on http://localhost:4000
- Connected to MySQL
- Users table ready
+Server running on http://localhost:4000
+Connected to MySQL
+Users table ready
 ```
 
 ---
 
-## API Endpoints
+## 🔗 API Endpoints
 
-| Method | Endpoint         | Description       | Body Example (JSON)                                              |
-| ------ | ---------------- | ----------------- | ---------------------------------------------------------------- |
-| POST   | `/api/users`     | Create a new user | `{ "name": "Rebira", "email": "rebira@example.com", "age": 22 }` |
-| GET    | `/api/users`     | List all users    | N/A                                                              |
-| GET    | `/api/users/:id` | Get a user by ID  | N/A                                                              |
-| PUT    | `/api/users/:id` | Update user info  | `{ "age": 23 }`                                                  |
-| DELETE | `/api/users/:id` | Delete a user     | N/A                                                              |
+### User Entity (`/api/users`)
 
----
-
-## Testing the API
-
-1. **Postman**: Create requests for all endpoints and verify responses.
-2. **MySQL**: Check the `users` table to confirm CRUD operations:
-
-```sql
-USE saiketdb;
-SELECT * FROM users;
-```
+| Method | Endpoint         | Description      | Example Body                                                     |
+| ------ | ---------------- | ---------------- | ---------------------------------------------------------------- |
+| POST   | `/api/users`     | Create new user  | `{ "name": "Rebira", "email": "rebira@example.com", "age": 22 }` |
+| GET    | `/api/users`     | List all users   | N/A                                                              |
+| GET    | `/api/users/:id` | Get user by ID   | N/A                                                              |
+| PUT    | `/api/users/:id` | Update user info | `{ "age": 23 }`                                                  |
+| DELETE | `/api/users/:id` | Delete user      | N/A                                                              |
 
 ---
 
-## Skills Demonstrated
+## 📖 Testing
 
-- SQL basics: `INSERT`, `SELECT`, `UPDATE`, `DELETE`
-- Node.js + Express REST API
-- Database connection using `mysql2`
-- CRUD operations integration
-- API testing with Postman
+* **Postman** – Create and send requests to all endpoints.
+* **MySQL CLI/Workbench** – Run queries like:
+
+  ```sql
+  USE crud_db;
+  SELECT * FROM users;
+  ```
 
 ---
 
-## Author
+## 🚀 Skills Demonstrated
+
+* Designing database schema in MySQL
+* SQL basics: `INSERT`, `SELECT`, `UPDATE`, `DELETE`
+* Building REST APIs with **Node.js + Express**
+* Database integration using **mysql2**
+* API testing with **Postman**
+
+---
+
+## 👨‍💻 Author
 
 **Rebira Adugna**
-Software Engineering Student | Full Stack & Cloud Enthusiast
-ASTU, Ethiopia
+Software Engineering Student | Full Stack & Cloud Enthusiast | ASTU, Ethiopia
 
-```
-
-```
+---
